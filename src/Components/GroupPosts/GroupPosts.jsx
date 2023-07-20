@@ -1,6 +1,11 @@
 import React from "react";
 import { Button, Card, Dropdown } from "react-bootstrap";
-import { BsChevronDown, BsThreeDots } from "react-icons/bs";
+import {
+  BsChevronDown,
+  BsThreeDots,
+  BsBriefcaseFill,
+  BsFillCalendarEventFill,
+} from "react-icons/bs";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import "./GroupPost.css";
 import { AiOutlineEye, AiOutlineShareAlt } from "react-icons/ai";
@@ -84,9 +89,9 @@ const GroupPosts = () => {
                   <Dropdown.Toggle
                     variant="light"
                     id="dropdown-basic"
-                    className="custom-dropdown-toggle"
+                    className="custom-dropdown-toggle bg-body"
                   >
-                    <BsThreeDots />
+                    <BsThreeDots className="fs-3" />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item
@@ -160,13 +165,32 @@ const GroupPosts = () => {
                 Education
               </Card.Subtitle>
               <div className="d-flex justify-content-between align-items-center">
-                {" "}
                 <Card.Title>
                   What if famous brands had regular fonts? Meet RegulaBrands!
                 </Card.Title>
-                <p className="fs-2 mr-4 ml-3">
-                  <BsThreeDots />
-                </p>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="light"
+                    id="dropdown-basic"
+                    className="custom-dropdown-toggle bg-body"
+                  >
+                    <BsThreeDots className="fs-3" />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      eventKey="edit"
+                      onSelect={handleOptionSelect}
+                    >
+                      Edit
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="report"
+                      onSelect={handleOptionSelect}
+                    >
+                      Report
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </div>
               <Card.Text>
                 I’ve worked in UX for the better part of a decade. From now on,
@@ -223,18 +247,50 @@ const GroupPosts = () => {
                 Meetup
               </Card.Subtitle>
               <div className="d-flex justify-content-between align-items-center">
-                {" "}
                 <Card.Title>
                   What if famous brands had regular fonts? Meet RegulaBrands!
                 </Card.Title>
-                <p className="fs-2 mr-4 ml-3">
-                  <BsThreeDots />
-                </p>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="light"
+                    id="dropdown-basic"
+                    className="custom-dropdown-toggle bg-body"
+                  >
+                    <BsThreeDots className="fs-3" />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      eventKey="edit"
+                      onSelect={handleOptionSelect}
+                    >
+                      Edit
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="report"
+                      onSelect={handleOptionSelect}
+                    >
+                      Report
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+              <div className="d-flex gap-5">
+                <h6>
+                  <BsFillCalendarEventFill className="mr-2" />
+                  Fri, 12 Oct, 2018
+                </h6>
+                <h6>
+                  <VscLocation className=" " />
+                  Ahmedabad, India
+                </h6>
               </div>
               <Card.Text>
                 I’ve worked in UX for the better part of a decade. From now on,
                 I plan to rei…
               </Card.Text>
+              <button className="btn border w-100 mt-1 mb-3 text-danger font-weight-bold rounded-3">
+                Visit Website
+              </button>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex align-items-center">
                   <img
@@ -281,18 +337,49 @@ const GroupPosts = () => {
                 Job
               </Card.Subtitle>
               <div className="d-flex justify-content-between align-items-center">
-                {" "}
-                <Card.Title>
-                  What if famous brands had regular fonts? Meet RegulaBrands!
-                </Card.Title>
-                <p className="fs-2 mr-4 ml-3">
-                  <BsThreeDots />
-                </p>
+                <Card.Title>Software Developer</Card.Title>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="light"
+                    id="dropdown-basic"
+                    className="custom-dropdown-toggle bg-body"
+                  >
+                    <BsThreeDots className="fs-3" />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      eventKey="edit"
+                      onSelect={handleOptionSelect}
+                    >
+                      Edit
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      eventKey="report"
+                      onSelect={handleOptionSelect}
+                    >
+                      Report
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </div>
+              <div className="d-flex gap-5">
+                <h6>
+                  <BsBriefcaseFill className="mr-2" />
+                  Innovaccer Analytics Private Ltd.
+                </h6>
+                <h6>
+                  <VscLocation className=" " />
+                  Noida, India
+                </h6>
+              </div>
+
               <Card.Text>
                 I’ve worked in UX for the better part of a decade. From now on,
                 I plan to rei…
               </Card.Text>
+              <button className="btn border w-100 mt-1 mb-3 text-success font-weight-bold rounded-3" >
+                Visit Website
+              </button>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex align-items-center">
                   <img
