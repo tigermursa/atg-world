@@ -1,14 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import 'bootstrap/dist/css/bootstrap.css'; // Import Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.css"; // Import Bootstrap CSS
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import Layout from "./Components/Layout/Layout.jsx";
+import Home from "./Components/Home/Home.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
   },
 ]);
 
