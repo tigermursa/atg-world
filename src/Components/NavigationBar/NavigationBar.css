@@ -1,0 +1,20 @@
+/* NavigationBar.css */
+/* Custom modal dialog width */
+.custom-modal-dialog {
+  max-width: 800px; /* Set your desired width for larger screens */
+}
+
+/* Media query for phones with a maximum width of 768px */
+@media (max-width: 768px) {
+  .custom-modal-dialog {
+    max-width: 100%; /* Set 100% width for phones */
+    margin: 0; /* Remove any default margins */
+  }
+  .modal-content {
+    height: 100vh; /* Set the modal content height to 100% of the viewport height */
+  }
+  .modal-dialog {
+    height: 100vh; /* Set the modal dialog height to 100% of the viewport height */
+    margin: 0; /* Remove any default margins */
+  }
+}
