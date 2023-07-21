@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import Lottie from "react-lottie";
@@ -7,8 +7,17 @@ import "./Signup.css";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import Login from "../Login/Login";
+import { AuthContext } from "../Provider/AuthProvider";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import app from "../Firebase/firebasecongif";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const { createUser, signInGoogle } = useContext(AuthContext);
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -17,7 +26,7 @@ const Signup = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-
+  const [userPhoto, setUserPhoto] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -26,7 +35,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
-
+  const googleProvider = new GoogleAuthProvider();
   const [showModal, setShowModal] = useState(false);
 
   const handleInputChange = (event) => {
@@ -40,9 +49,24 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your logic here for form submission and validation
-    // For example, you can check if passwords match, validate email format, etc.
-    console.log(formData);
+
+    if (formData.password !== formData.confirmPassword) {
+      console.log("Passwords do not match!");
+      return;
+    }
+    const auth = getAuth(app);
+    createUserWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((user) => {
+        console.log("User account created successfully:", user);
+        const displayName = `${formData.firstName} ${formData.lastName}`;
+        user.updateProfile({
+          displayName: displayName,
+        });
+        navigate(from) || "/";
+      })
+      .catch((error) => {
+        console.log("Error creating user account:", error);
+      });
   };
 
   const handleSignInClick = () => {
@@ -51,6 +75,30 @@ const Signup = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+
+  const handleGoogleSignIn = () => {
+    signInGoogle(googleProvider)
+      .then((result) => {
+        const theUser = result.user;
+        if (!theUser.displayName) {
+          const displayName = `${formData.firstName} ${formData.lastName}`;
+          theUser.updateProfile({
+            displayName: displayName,
+          });
+        }
+        createUser(theUser)
+          .then(() => {
+            console.log("User created successfully!");
+            navigate(from) || "/";
+          })
+          .catch((error) => {
+            console.log("Error creating user:", error);
+          });
+      })
+      .catch((error) => {
+        console.log("Error signing in with Google:", error);
+      });
   };
 
   return (
@@ -127,12 +175,15 @@ const Signup = () => {
             >
               Create Account
             </Button>
-            {/* Add social login options */}
-            <div className="text-center mb-3 d-none">Or sign up with:</div>
+            <div className="text-center mb-3">Or sign up with:</div>
             <Button variant="outline-primary" className="mb-2 w-100">
               <BsFacebook /> Sign up with Facebook
             </Button>
-            <Button variant="outline-danger" className="w-100">
+            <Button
+              variant="outline-danger"
+              className="w-100"
+              onClick={handleGoogleSignIn}
+            >
               <FcGoogle /> Sign up with Google
             </Button>
           </Form>
@@ -158,8 +209,6 @@ const Signup = () => {
           </div>
         </Col>
       </Row>
-
-      {/* Modal for the Login component */}
       <Modal
         show={showModal}
         onHide={handleCloseModal}

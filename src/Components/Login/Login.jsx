@@ -83,13 +83,28 @@ const Login = () => {
                 {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
               </span>
             </div>
-            <Button
-              type="submit"
-              variant="primary"
-              className="w-100 mt-3 rounded-5 mb-5"
-            >
-              Create Account
-            </Button>
+            <div>
+              <Button
+                type="submit"
+                variant="primary"
+                className="w-100 mt-3 rounded-5 mb-5 d-none d-md-block d-lg-block"
+              >
+                Create Account
+              </Button>
+
+              <div className="d-flex align-items-center gap-5 d-block d-sm-none">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="w-50 mt-3 rounded-5 mb-5"
+                >
+                  Create Account
+                </Button>{" "}
+                <p className="w-50 mb-4" onClick={handleShowModal}>
+                  or create account
+                </p>
+              </div>
+            </div>
             <div className="text-center mb-3 d-none">Or sign up with:</div>
             <Button variant="outline-primary" className="mb-2 w-100">
               <BsFacebook /> Sign up with Facebook
@@ -100,7 +115,7 @@ const Login = () => {
           </Form>
         </Col>
         <Col xs={12} sm={10} md={8} lg={6} className="mt-5">
-          <div className="text-center pb-5">
+          <div className="text-center pb-5  d-none d-md-block">
             Don’t have an account yet?
             <a className="font-weight-bold" href="#" onClick={handleShowModal}>
               Create new for free!
@@ -110,9 +125,7 @@ const Login = () => {
             <Lottie options={defaultOptions} height={300} width={300} />
           </div>
           <div className="d-block d-sm-none">
-            <p className="text-muted font-weight-bold">
-            Forgot Password?
-            </p>
+            <p className="text-muted font-weight-bold">Forgot Password?</p>
           </div>
         </Col>
       </Row>

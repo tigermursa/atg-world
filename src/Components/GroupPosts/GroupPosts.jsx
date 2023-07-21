@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Dropdown } from "react-bootstrap";
 import {
   BsChevronDown,
   BsThreeDots,
   BsBriefcaseFill,
   BsFillCalendarEventFill,
+  BsBoxArrowInLeft,
 } from "react-icons/bs";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import "./GroupPost.css";
-import { AiOutlineEye, AiOutlineShareAlt } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineShareAlt, AiFillLike } from "react-icons/ai";
 import { VscLocation } from "react-icons/vsc";
 import { MdEdit } from "react-icons/md";
 import { CgDanger } from "react-icons/cg";
 const GroupPosts = () => {
+  const [isJoined, setIsJoined] = useState(false);
+  const handleJoinToggle = () => {
+    setIsJoined(!isJoined);
+  };
+  const [isFollowed, setIsFollowed] = useState(false);
+  const handleFollowedToggle = () => {
+    setIsFollowed(!isFollowed);
+  };
   const handleOptionSelect = (eventKey) => {
     // Handle the selected option here (Edit or Report)
     switch (eventKey) {
@@ -54,10 +63,19 @@ const GroupPosts = () => {
             Write a Post <BsChevronDown />
           </Button>
 
-          <Button variant="primary" className="">
+          <Button variant="primary" onClick={handleJoinToggle} className="">
             <div className="d-flex align-items-center">
-              <MdOutlineGroupAdd className="me-2 d-flex flex-row-reverse" />
-              Join Group
+              {isJoined ? (
+                <>
+                  <BsBoxArrowInLeft />
+                  <span className="ms-2">Leave Group</span>
+                </>
+              ) : (
+                <>
+                  <MdOutlineGroupAdd className="me-2 d-flex flex-row-reverse" />
+                  <span>Join Group</span>
+                </>
+              )}
             </div>
           </Button>
         </div>
@@ -377,7 +395,7 @@ const GroupPosts = () => {
                 I’ve worked in UX for the better part of a decade. From now on,
                 I plan to rei…
               </Card.Text>
-              <button className="btn border w-100 mt-1 mb-3 text-success font-weight-bold rounded-3" >
+              <button className="btn border w-100 mt-1 mb-3 text-success font-weight-bold rounded-3">
                 Visit Website
               </button>
               <div className="d-flex justify-content-between align-items-center">
@@ -440,6 +458,118 @@ const GroupPosts = () => {
               Your location will help us serve better <br /> and extend a
               personalized experience.
             </p>
+          </div>
+          <div>
+            {isJoined ? (
+              <div className="d-flex flex-column justify-content-center align-items-center mt-5">
+                <h5 className="mb-4">
+                  <AiFillLike /> RECOMMENDED Groups
+                </h5>
+                <div className="d-flex justify-content-between w-75 mt-4">
+                  <div>
+                    <div className="d-flex align-items-center">
+                      <img
+                        src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tfGVufDB8fDB8fHww&w=1000&q=80"
+                        alt="Profile"
+                        style={{
+                          width: "35px",
+                          height: "35px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <div className="d-flex flex-column align-items -start">
+                        <h6 className="mb-0 ms-2">Leisure</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <button
+                      className={`btn rounded-5 ${
+                        isFollowed ? "bg-black text-white" : "bg-danger-subtle"
+                      }`}
+                      onClick={handleFollowedToggle}
+                    >
+                      {isFollowed ? "Followed" : "Follow"}
+                    </button>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between w-75 mt-4">
+                  <div>
+                    <div className="d-flex align-items-center">
+                      <img
+                        src="https://randomwordgenerator.com/img/picture-generator/chair-1840011_640.jpg"
+                        alt="Profile"
+                        style={{
+                          width: "35px",
+                          height: "35px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <div className="d-flex flex-column align-items -start">
+                        <h6 className="mb-0 ms-2">Philosophy</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <button className="btn bg-danger-subtle rounded-5">
+                      Follow
+                    </button>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between w-75 mt-4">
+                  <div>
+                    <div className="d-flex align-items-center">
+                      <img
+                        src="https://machinelearningmastery.com/wp-content/uploads/2017/01/A-Gentle-Introduction-to-the-Random-Walk-for-Times-Series-Forecasting-with-Python.jpg"
+                        alt="Profile"
+                        style={{
+                          width: "35px",
+                          height: "35px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <div className="d-flex flex-column align-items -start">
+                        <h6 className="mb-0 ms-2">Activism</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <button className="btn bg-danger-subtle rounded-5">
+                      Follow
+                    </button>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between w-75 mt-4">
+                  <div>
+                    <div className="d-flex align-items-center">
+                      <img
+                        src="https://post.healthline.com/wp-content/uploads/2020/08/732x549_Are_Random_Erections_Normal.jpg"
+                        alt="Profile"
+                        style={{
+                          width: "35px",
+                          height: "35px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <div className="d-flex flex-column align-items -start">
+                        <h6 className="mb-0 ms-2">MBA</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <button className="btn bg-danger-subtle rounded-5">
+                      Follow
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              " "
+            )}
           </div>
         </div>
       </div>
