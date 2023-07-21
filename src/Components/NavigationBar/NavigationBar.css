@@ -3,7 +3,12 @@
 .custom-modal-dialog {
   max-width: 800px; /* Set your desired width for larger screens */
 }
-
+.profile-photo{
+  width: 40px;
+  height: 40px;
+  border-radius: 80%;
+ 
+}
  /* Media query for phones with a maximum width of 768px */
  @media (max-width: 768px) {
   .custom-modal-dialog {
