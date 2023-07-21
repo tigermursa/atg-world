@@ -29,7 +29,7 @@
   display: none;
 }
 .custom-dropdown-toggle::after {
-  /* Hide the default dropdown toggle arrow */
+  /* Hideing  the default dropdown toggle arrow */
   display: none !important;
 }
 /* Responsive styles using media queries */

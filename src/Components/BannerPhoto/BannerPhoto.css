@@ -23,11 +23,11 @@
     }
 
     .text-container {
-        padding-bottom: 60px; /* Adjust the padding for smaller screens */
+        padding-bottom: 60px; 
     }
 
     .text-white {
-        font-size: 28px; /* Adjust the font size for smaller screens */
+        font-size: 28px; 
     }
 }
 
@@ -37,10 +37,10 @@
     }
 
     .text-container {
-        padding-bottom: 40px; /* Adjust the padding for even smaller screens */
+        padding-bottom: 40px; 
     }
 
     .text-white {
-        font-size: 12px; /* Adjust the font size for even smaller screens */
+        font-size: 12px; 
     }
 }
