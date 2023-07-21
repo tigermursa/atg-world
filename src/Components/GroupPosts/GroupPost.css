@@ -41,6 +41,28 @@
   .post-image {
     height: 14rem;
   }
+  .location {
+    display: none;
+  }
+  .phone-display {
+    display: none;
+  }
+  .content-full-area {
+    border: 1px solid;
+    width: 100%;
+    margin: 0;
+  }
+  .post-image {
+    height: 10rem;
+  }
+  .large-display {
+    display: block;
+  }
+}
+@media (max-width:1060px) {
+  .write-join{
+    display: none;
+  }
 }
 
 @media (max-width: 576px) {

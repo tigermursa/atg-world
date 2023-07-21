@@ -58,7 +58,7 @@ const GroupPosts = () => {
             filter:All <BsChevronDown />
           </Button>
         </div>
-        <div className="phone-display">
+        <div className="phone-display write-join">
           <Button variant="outline-primary" className="me-2 ">
             Write a Post <BsChevronDown />
           </Button>
@@ -438,7 +438,7 @@ const GroupPosts = () => {
         </div>
 
         {/* Part two (35% width) */}
-        <div style={{ flex: "35%" }} className="location">
+        <div  style={{ flex: "35%" }} className="location write-join">
           <div className="d-flex justify-content-between align-items-center mb-3 shadow-sm pr-3 pl-3 m-4">
             <p>
               <span role="img" aria-label="Location" className="">
