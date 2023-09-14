@@ -22,9 +22,9 @@ Firebase Hosting: The website has been deployed and hosted using Firebase Hostin
 Firebase Authentication: Firebase Authentication has been integrated to handle user authentication, ensuring secure access to certain parts of the website.
 
 Live Link:
-The live version of the website can be accessed using the following link: https://atg-world-42fbf.web.app/
+The live version of the website can be accessed using the following link: https://atg-world-42fbf.web.app/ 
 
-Note to Reviewers:
+Note to Reviewers
 Kindly review the live website and provide feedback on the design, responsiveness, and overall functionality of the site. Feel free to test the Firebase authentication features and check for any potential improvements or optimizations.
 
 Please let me know if you need any further information or have specific questions regarding the project.
